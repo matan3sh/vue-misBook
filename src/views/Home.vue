@@ -1,18 +1,54 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <header class="showcase">
+      <h2>Books Deals</h2>
+      <p>
+        Select Books are on sale now - save while supplies last
+      </p>
+      <a href="#" class="btn">
+        Shop Now <i class="fas fa-chevron-right"></i>
+      </a>
+    </header>
+    <book-list :books="booksToShow" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import BookList from '../components/Book/BookList';
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  components: { BookList },
+  computed: {
+    booksToShow() {
+      return this.$store.getters.booksToShow;
+    }
+  },
+  async created() {
+    await this.$store.dispatch({ type: 'loadBooks' });
   }
-}
+};
 </script>
+
+<style scoped>
+.showcase {
+  width: 100%;
+  height: 400px;
+  background: url('../../public/img/slide1.png') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-end;
+  padding-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.showcase h2,
+.showcase p {
+  margin-bottom: 10px;
+}
+
+.showcase .btn {
+  margin-top: 20px;
+}
+</style>
