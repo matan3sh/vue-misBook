@@ -35,14 +35,14 @@ export default {
 
 .search i {
   position: absolute;
-  top: 8px;
+  top: 10px;
   right: 8px;
 }
 
 .search input {
   display: inline-block;
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.4rem 0.5rem;
   font-size: 0.8rem;
   border: 1px solid #ccc;
   border-radius: 7px;

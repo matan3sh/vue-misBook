@@ -77,7 +77,8 @@ export default {
       this.showModal = false;
     },
     addToCart() {
-      console.log('Add ToCart');
+      const addedbook = this.book;
+      this.$store.dispatch({ type: 'addBookToCart', addedbook });
     }
   },
   created() {

@@ -14,9 +14,10 @@
         <BookFilter @filter="setFilter" />
       </li>
       <li>
-        <a href="#">
+        <router-link to="/cart">
           <i class="fas fa-shopping-cart"></i>
-        </a>
+          <span class="cart-len">({{ cart.length }})</span>
+        </router-link>
       </li>
     </ul>
   </nav>
@@ -27,6 +28,15 @@ import BookFilter from '../Book/BookFilter';
 export default {
   name: 'Navbar',
   components: { BookFilter },
+  computed: {
+    cart() {
+      return this.$store.getters.booksInCart;
+    }
+  },
+  async created() {
+    await this.$store.dispatch({ type: 'loadBooks' });
+    await this.$store.dispatch({ type: 'loadCart' });
+  },
   methods: {
     setFilter(filterBy) {
       this.$store.commit('setFilter', { ...filterBy });
@@ -104,5 +114,17 @@ export default {
 .dark .btn {
   background: #f4f4f4;
   color: #333;
+}
+
+i {
+  position: relative;
+  top: 5px;
+}
+
+.cart-len {
+  font-size: 0.8rem;
+  margin: 0 0.5rem;
+  position: relative;
+  top: 3px;
 }
 </style>

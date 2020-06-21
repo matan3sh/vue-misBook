@@ -21,10 +21,10 @@ export default {
   computed: {
     booksToShow() {
       return this.$store.getters.booksToShow;
+    },
+    cart() {
+      return this.$store.getters.booksInCart;
     }
-  },
-  async created() {
-    await this.$store.dispatch({ type: 'loadBooks' });
   }
 };
 </script>
