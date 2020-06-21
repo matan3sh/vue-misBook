@@ -8,7 +8,7 @@
       <p class="full-name">{{ review.fullName }}</p>
       <p class="time">{{ moment(this.review.readAt).fromNow() }}</p>
     </div>
-    <div class="right">
+    <div class="right-side">
       <ReviewRate :rate="(100 / 5) * review.rate" />
       <p>
         {{ review.textArea }}
@@ -56,7 +56,7 @@ export default {
   color: #333;
 }
 
-.right p {
+.right-side p {
   font-size: 1rem;
   color: #333;
 }

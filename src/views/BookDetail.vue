@@ -26,6 +26,8 @@
             <i class="fas fa-shipping-fast" /> Free Shipping
           </div>
           <p class="business-days">14 business days</p>
+          <button class="btn-add">Buy Now</button>
+          <button @click="addToCart" class="btn-add">Add To Cart</button>
         </div>
       </div>
       <button class="btn-add" @click="showModal = true">Add Review</button>
@@ -73,6 +75,9 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+    },
+    addToCart() {
+      console.log('Add ToCart');
     }
   },
   created() {
@@ -187,5 +192,9 @@ h5 {
 .slide-enter,
 .slide-leave-to {
   transform: translateY(-50%) translateX(100vw);
+}
+
+.right button {
+  width: 100%;
 }
 </style>
