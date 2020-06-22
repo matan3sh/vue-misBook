@@ -3,6 +3,7 @@
 export const Utils = {
   storeToStorage,
   loadFromStorage,
+  removeFromStorage,
   getRandomInt,
   getRandomId
 };
@@ -13,6 +14,10 @@ function storeToStorage(key, value) {
 function loadFromStorage(key) {
   let data = localStorage.getItem(key);
   return data ? JSON.parse(data) : undefined;
+}
+
+function removeFromStorage(key) {
+  localStorage.removeItem(key);
 }
 
 function getRandomId() {

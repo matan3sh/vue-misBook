@@ -77,4 +77,30 @@ export default {
 .cart-card-footer {
   display: flex;
 }
+
+@media (max-width: 1244px) {
+  .cart-card img {
+    width: 60%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 931px) {
+  .cart-card img {
+    width: 100px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 666px) {
+  .cart-card {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-top: 1px #ddd double;
+    padding: 1rem;
+  }
+  .cart-card div {
+    margin: auto;
+  }
+}
 </style>

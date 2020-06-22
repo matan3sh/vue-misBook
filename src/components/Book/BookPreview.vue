@@ -29,7 +29,8 @@ export default {
 
 <style scoped>
 .book-card img {
-  width: 100%;
+  width: 150px;
+  height: 200px;
   border-bottom: rgb(214, 214, 214) 9px solid;
   border-left: #333 10px solid;
   border-top-left-radius: 8px;

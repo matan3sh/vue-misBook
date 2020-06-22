@@ -11,8 +11,6 @@ export default {};
 
 <style scoped>
 img {
-  display: flex;
-  margin: auto;
-  justify-content: center;
+  width: 100%;
 }
 </style>

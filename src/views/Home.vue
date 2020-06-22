@@ -5,9 +5,9 @@
       <p>
         Select Books are on sale now - save while supplies last
       </p>
-      <p>
+      <a href="#cards">
         Shop Now
-      </p>
+      </a>
       <i class="fas fa-chevron-down"></i>
     </header>
     <book-list :books="booksToShow" />
@@ -51,5 +51,24 @@ export default {
 
 .showcase .btn {
   margin-top: 20px;
+}
+
+.showcase i {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 612px) {
+  .showcase {
+    height: 200px;
+  }
+
+  .showcase h2,
+  .showcase p {
+    display: none;
+  }
+
+  .showcase i {
+    margin-top: 0.5rem;
+  }
 }
 </style>

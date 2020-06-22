@@ -6,8 +6,11 @@
     </div>
     <div class="total">
       <p>
-        Total: <span>{{ totalPrice }} $</span>
+        Total: <span>{{ totalPrice }}$</span>
       </p>
+      <router-link to="/complete">
+        <button @click="checkout">Checkout</button>
+      </router-link>
     </div>
   </section>
 </template>
@@ -27,6 +30,11 @@ export default {
       }
       return sum;
     }
+  },
+  methods: {
+    checkout() {
+      this.$store.dispatch({ type: 'emptyCart' });
+    }
   }
 };
 </script>
@@ -43,15 +51,42 @@ export default {
 
 .total {
   border-top: 1px #ddd double;
+  text-align: right;
 }
 
 .total p {
-  text-align: right;
   font-size: 1.2rem;
   font-weight: 800;
 }
 
 .total span {
   color: darkred;
+  margin-right: 0.5rem;
+}
+
+.total button {
+  display: inline-block;
+  background: #f0c24e;
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  font-size: 0.8rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin: 0.5rem 0;
+  transition: 0.2s ease-in;
+  border-radius: 6px;
+  outline: none;
+}
+
+.total button:hover {
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 1275px) {
+  .total {
+    text-align: center;
+  }
 }
 </style>

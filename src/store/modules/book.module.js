@@ -41,6 +41,9 @@ export default {
       );
       state.books[idx] = payload.savedBook;
     },
+    addBook(state, payload) {
+      state.books.push(payload.savedBook);
+    },
     setFilter(state, filterBy) {
       state.filterBy = filterBy;
     }
@@ -54,6 +57,10 @@ export default {
     async updateBook(context, payload) {
       const savedBook = await bookService.update(payload.updatedBook);
       context.commit({ type: 'updateBook', savedBook });
+    },
+    async addBook(context, payload) {
+      const savedBook = await bookService.add(payload.book);
+      context.commit({ type: 'addBook', savedBook });
     }
   }
 };

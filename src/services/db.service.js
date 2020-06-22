@@ -8,7 +8,8 @@ export const DbService = {
   delete: remove,
   post,
   put,
-  insert
+  insert,
+  empty
 };
 
 const ID_FIELD = '_id';
@@ -61,5 +62,10 @@ async function insert(collectionName, items) {
   collection.push(...items);
 
   Utils.storeToStorage(collectionName, collection);
+  return Promise.resolve();
+}
+
+async function empty(collectionName) {
+  Utils.removeFromStorage(collectionName);
   return Promise.resolve();
 }

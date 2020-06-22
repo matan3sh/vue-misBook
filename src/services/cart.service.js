@@ -9,7 +9,8 @@ export default {
   get,
   remove,
   add,
-  update
+  update,
+  empty
 };
 
 async function query() {
@@ -31,4 +32,8 @@ function add(product) {
 
 function update(product) {
   return DbService.put(KEY, product);
+}
+
+function empty() {
+  return DbService.empty(KEY);
 }

@@ -48,4 +48,24 @@ export default {
   border-radius: 7px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+@media (max-width: 765px) {
+  .search input {
+    width: 80%;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.6rem;
+  }
+
+  .search i {
+    position: absolute;
+    top: 8px;
+    right: 25px;
+  }
+}
+
+@media (max-width: 703px) {
+  .search {
+    display: none;
+  }
+}
 </style>

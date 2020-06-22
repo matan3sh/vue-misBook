@@ -11,9 +11,13 @@
           <ReviewRate :rate="rating" /><span
             >({{ book.reviews.length }} reviews)</span
           >
-          <p>
-            {{ book.description }}
-          </p>
+          <div v-if="book.description.length > 255">
+            <p>
+              {{ book.description.slice(0, 255) }}
+              <long-text v-if="readMore" :description="book.description" />
+              <span @click="toggle"> Read More</span>
+            </p>
+          </div>
         </div>
         <div class="right">
           <p class="price" v-if="book.listPrice.isOnSale">
@@ -54,16 +58,18 @@
 <script>
 import bookService from '../services/book.service';
 import Loader from '../components/Shared/Loader';
+import LongText from '../components/Shared/LongText';
 import AddReview from '../components/Book/Review/AddReview';
 import ReviewRate from '../components/Book/Review/ReviewRate';
 import ReviewList from '../components/Book/Review/ReviewList';
 export default {
   name: 'BookDetail',
-  components: { ReviewRate, Loader, ReviewList, AddReview },
+  components: { ReviewRate, Loader, ReviewList, AddReview, LongText },
   data() {
     return {
       book: null,
-      showModal: false
+      showModal: false,
+      readMore: false
     };
   },
   computed: {
@@ -87,6 +93,9 @@ export default {
     addToCart() {
       const addedbook = this.book;
       this.$store.dispatch({ type: 'addBookToCart', addedbook });
+    },
+    toggle() {
+      this.readMore = !this.readMore;
     }
   },
   created() {
@@ -205,5 +214,21 @@ h5 {
 
 .right button {
   width: 100%;
+}
+
+span {
+  cursor: pointer;
+}
+
+@media (max-width: 795px) {
+  .book-details-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .left img {
+    width: 60%;
+    margin: 0 auto;
+  }
 }
 </style>

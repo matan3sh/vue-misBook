@@ -5,6 +5,8 @@ import Home from '../views/Home.vue';
 import About from '../views/About.vue';
 import BookDetail from '../views/BookDetail.vue';
 import Cart from '../views/Cart.vue';
+import OrderComplete from '../views/OrderComplete.vue';
+import GBooks from '../views/GBooks.vue';
 
 Vue.use(VueRouter);
 
@@ -23,6 +25,16 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/complete',
+    name: 'OrderComplete',
+    component: OrderComplete
+  },
+  {
+    path: '/gbooks',
+    name: 'GBooks',
+    component: GBooks
   },
   {
     path: '/:id',

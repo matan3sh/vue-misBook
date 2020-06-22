@@ -1,11 +1,12 @@
 <template>
   <nav class="main-nav">
     <router-link to="/"
-      ><img src="img/logo.png" alt="Microsoft" class="logo"
+      ><img src="img/logo.png" alt="MisBook" class="logo"
     /></router-link>
 
     <ul class="main-menu">
       <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/gbooks">GBooks</router-link></li>
       <li><router-link to="/about">About</router-link></li>
     </ul>
 
@@ -17,7 +18,11 @@
         <router-link to="/cart">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-len">({{ cart.length }})</span>
-          <span v-if="cart.length > 0" class="btn">Buy Now</span>
+          <router-link to="/complete"
+            ><span @click="buyNow" v-if="cart.length > 0" class="btn"
+              >Buy Now</span
+            ></router-link
+          >
         </router-link>
       </li>
     </ul>
@@ -41,6 +46,9 @@ export default {
   methods: {
     setFilter(filterBy) {
       this.$store.commit('setFilter', { ...filterBy });
+    },
+    buyNow() {
+      this.$store.dispatch({ type: 'emptyCart' });
     }
   }
 };
@@ -118,5 +126,17 @@ i {
   margin: 0 0.5rem;
   position: relative;
   top: 1px;
+}
+
+@media (max-width: 600px) {
+  .in-cart {
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .main-menu {
+    font-size: 0.6rem;
+  }
 }
 </style>

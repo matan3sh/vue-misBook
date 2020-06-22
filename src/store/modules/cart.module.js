@@ -23,6 +23,9 @@ export default {
       if (idx === -1)
         throw new Error('Somthing went wrong while deleting book from cart');
       state.booksInCart.splice(idx, 1);
+    },
+    emptyCart(state, payload) {
+      state.booksInCart = [];
     }
   },
   actions: {
@@ -38,6 +41,10 @@ export default {
     async removeBookFromCart({ commit }, { id }) {
       await cartService.remove(id);
       commit({ type: 'removeBookFromCart', id });
+    },
+    async emptyCart({ commit }, payload) {
+      await cartService.empty();
+      commit({ type: 'emptyCart' });
     }
   }
 };

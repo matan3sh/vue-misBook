@@ -12,7 +12,7 @@
             >#Coding Academy</a
           >
         </p>
-        <p class="by">Developed By @Matan</p>
+        <p class="by">Developed By @Matan Shaviro</p>
         <div class="social-icons">
           <a
             href="https://www.linkedin.com/in/matan-shaviro-990b0272/"
@@ -60,5 +60,28 @@
 
 .social-icons i {
   margin: 0.5rem 1rem;
+}
+
+@media (max-width: 500px) {
+  .about-wrapper img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .about-wrapper p {
+    font-size: 0.8rem;
+    margin: 0 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .about-wrapper img {
+    margin-left: 1rem;
+  }
+
+  .about-wrapper p {
+    font-size: 0.7rem;
+    margin: 0 1rem;
+  }
 }
 </style>
