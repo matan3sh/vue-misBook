@@ -8,7 +8,7 @@ export default {
   query,
   get,
   remove,
-  save,
+  update,
   getEmptybook,
   getBookRating
 };
@@ -31,9 +31,12 @@ function remove(id) {
   return DbService.delete(KEY, id);
 }
 
-function save(book) {
-  if (book._id) return DbService.put(KEY, book);
-  else return DbService.post(KEY, book);
+function add(book) {
+  return DbService.post(KEY, book);
+}
+
+function update(book) {
+  return DbService.put(KEY, book);
 }
 
 function getBookRating(book) {
@@ -191,14 +194,14 @@ function _createDefaultbooks() {
           id: 'ghf125',
           fullName: 'Book Reader 1',
           rate: 1,
-          readAt: Date.now(),
+          readAt: new Date(),
           textArea: 'Bla Bla Bla'
         },
         {
           id: 'geg57h',
           fullName: 'Book Reader 2',
           rate: 5,
-          readAt: Date.now(),
+          readAt: new Date(),
           textArea: 'Bla2 Bla2 Bla2'
         }
       ]
@@ -226,14 +229,14 @@ function _createDefaultbooks() {
           id: '87536f',
           fullName: 'Book Fan',
           rate: 5,
-          readAt: Date.now(),
+          readAt: new Date(),
           textArea: 'WOWWWWWWWW'
         },
         {
           id: 'op98eg',
           fullName: 'Relly Joe',
           rate: 5,
-          readAt: Date.now(),
+          readAt: new Date(),
           textArea: 'Very Good Book!'
         }
       ]
@@ -261,20 +264,20 @@ function _createDefaultbooks() {
           id: 'ponfgh',
           fullName: 'Sara Jons',
           rate: 5,
-          readAt: Date.now(),
+          readAt: new Date(),
           textArea: 'Great Book'
         },
         {
           id: 'qwer56',
           fullName: 'Steve Smith',
           rate: 2,
-          readAt: Date.now(),
+          readAt: new Date(),
           textArea: 'Poor'
         }
       ]
     },
     {
-      id: 'lqRdDwAAQBAJ',
+      _id: 'lqRdDwAAQBAJ',
       title: 'The Mamba Mentality',
       subtitle: 'How I Play',
       authors: ['Kobe Bryant'],
@@ -296,14 +299,14 @@ function _createDefaultbooks() {
           id: 'yuL589',
           fullName: 'Book Reader',
           rate: 5,
-          readAt: Date.now(),
+          readAt: new Date(),
           textArea: 'Fantastic Book'
         },
         {
           id: 'yupLms',
           fullName: 'John Doe',
           rate: 5,
-          readAt: Date.now(),
+          readAt: new Date(),
           textArea: 'Very Inspairing'
         }
       ]

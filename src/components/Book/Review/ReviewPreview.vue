@@ -6,7 +6,7 @@
         alt=""
       />
       <p class="full-name">{{ review.fullName }}</p>
-      <p class="time">{{ moment(this.review.readAt).fromNow() }}</p>
+      <p class="time">{{ this.review.readAt | moment('calendar') }}</p>
     </div>
     <div class="right-side">
       <ReviewRate :rate="(100 / 5) * review.rate" />

@@ -37,7 +37,9 @@
           @click.stop="stopTheEvent"
           placeholder="Write Your Review ..."
         ></textarea>
-        <button @click.stop="stopTheEvent" class="btn-send">Send</button>
+        <button type="submit" @click.stop="stopTheEvent" class="btn-send">
+          Send
+        </button>
       </form>
     </div>
   </transition>
@@ -61,7 +63,8 @@ export default {
         id: Utils.getRandomId(),
         fullName,
         textArea,
-        rate
+        rate,
+        readAt: new Date()
       };
       this.$emit('sendReview', review);
       this.fullName = '';

@@ -1,6 +1,7 @@
 <template>
   <div>
-    <cart-list :cart="cart" />
+    <cart-list v-if="cart.length > 0" :cart="cart" />
+    <h1 v-else>Your Cart is Empty</h1>
   </div>
 </template>
 
@@ -17,4 +18,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+h1 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  margin: 5rem 0;
+}
+</style>

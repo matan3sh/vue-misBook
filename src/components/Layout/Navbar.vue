@@ -13,10 +13,11 @@
       <li>
         <BookFilter @filter="setFilter" />
       </li>
-      <li>
+      <li class="in-cart">
         <router-link to="/cart">
           <i class="fas fa-shopping-cart"></i>
           <span class="cart-len">({{ cart.length }})</span>
+          <span v-if="cart.length > 0" class="btn">Buy Now</span>
         </router-link>
       </li>
     </ul>
@@ -74,10 +75,6 @@ export default {
   padding-bottom: 2px;
 }
 
-.main-nav ul li a:hover {
-  border-bottom: 2px solid #262626;
-}
-
 .main-nav ul.main-menu {
   flex: 1;
   margin-left: 20px;
@@ -93,38 +90,33 @@ export default {
 }
 
 .btn {
-  cursor: pointer;
   display: inline-block;
-  border: 0;
-  font-weight: bold;
-  padding: 10px 20px;
-  background: #262626;
-  color: #fff;
-  font-size: 15px;
+  background: #f0c24e;
+  color: #333;
+  padding: 0.2rem 1rem;
+  font-size: 0.6rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  margin: 0.5rem 0;
+  transition: 0.2s ease-in;
+  border-radius: 6px;
+  outline: none;
 }
 
 .btn:hover {
-  opacity: 0.9;
-}
-
-.dark {
-  color: #fff;
-}
-
-.dark .btn {
-  background: #f4f4f4;
-  color: #333;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.4);
 }
 
 i {
   position: relative;
-  top: 5px;
+  top: 2px;
 }
-
 .cart-len {
   font-size: 0.8rem;
   margin: 0 0.5rem;
   position: relative;
-  top: 3px;
+  top: 1px;
 }
 </style>

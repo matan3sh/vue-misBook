@@ -10,7 +10,10 @@
       <div class="free-shipping">
         <i class="fas fa-shipping-fast" /> Free Shipping
       </div>
-      <p class="act" @click="removeBookFromCart(item._id)">Delete</p>
+      <div class="cart-card-footer">
+        <p class="cart-price">{{ item.listPrice.amount }}$</p>
+        <p class="act" @click="removeBookFromCart(item._id)">Delete</p>
+      </div>
     </div>
   </div>
 </template>
@@ -52,14 +55,26 @@ export default {
 .act {
   margin-top: 1rem;
   border-left: 1px #ccc double;
-  border-right: 1px #ccc double !important;
   padding: 5px;
   color: #0066c0 !important;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.cart-price {
+  margin-top: 1rem;
+  border-right: 1px #ccc double !important;
+  padding: 5px;
+  color: #4e0606 !important;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
 .free-shipping {
   color: #aaa;
+}
+
+.cart-card-footer {
+  display: flex;
 }
 </style>

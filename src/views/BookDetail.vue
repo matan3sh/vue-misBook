@@ -8,7 +8,7 @@
         <div class="middle">
           <h1>{{ book.title }}</h1>
           <h5><span>By</span> {{ book.authors.join(', ') }}</h5>
-          <ReviewRate :rate="bookRating" /><span
+          <ReviewRate :rate="rating" /><span
             >({{ book.reviews.length }} reviews)</span
           >
           <p>
@@ -26,8 +26,13 @@
             <i class="fas fa-shipping-fast" /> Free Shipping
           </div>
           <p class="business-days">14 business days</p>
-          <button class="btn-add">Buy Now</button>
-          <button @click="addToCart" class="btn-add">Add To Cart</button>
+          <button
+            v-if="book.listPrice.isOnSale"
+            @click="addToCart"
+            class="btn-add"
+          >
+            Add To Cart
+          </button>
         </div>
       </div>
       <button class="btn-add" @click="showModal = true">Add Review</button>
@@ -58,20 +63,23 @@ export default {
   data() {
     return {
       book: null,
-      bookRating: null,
       showModal: false
     };
+  },
+  computed: {
+    rating() {
+      return bookService.getBookRating(this.book);
+    }
   },
   methods: {
     async loadBook() {
       var id = this.$route.params.id;
       this.book = await bookService.get(id);
-      this.bookRating = bookService.getBookRating(this.book);
     },
     sendReview(review) {
       this.book.reviews.unshift(review);
       const updatedBook = this.book;
-      this.$store.dispatch({ type: 'saveBook', updatedBook });
+      this.$store.dispatch({ type: 'updateBook', updatedBook });
     },
     closeModal() {
       this.showModal = false;

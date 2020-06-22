@@ -5,9 +5,10 @@
       <p>
         Select Books are on sale now - save while supplies last
       </p>
-      <a href="#" class="btn">
-        Shop Now <i class="fas fa-chevron-right"></i>
-      </a>
+      <p>
+        Shop Now
+      </p>
+      <i class="fas fa-chevron-down"></i>
     </header>
     <book-list :books="booksToShow" />
   </div>
